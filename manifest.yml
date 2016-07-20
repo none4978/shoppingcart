@@ -1,0 +1,7 @@
+---
+applications:
+- buildpack: https://github.com/none4978/shoppingcart.git
+  host: shoppingcart-html-${random-word}
+  name: shoppingcart-html
+  memory: 64M
+  stack: cflinuxfs2

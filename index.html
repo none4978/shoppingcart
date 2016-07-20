@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>angular</title>
+<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+<script type="text/javascript">
+ 
+    //购物车中的数据;
+    //var boughtList = {};
+</script>
+
+<style>
+*{margin:0; padding:0; list-style:none;}
+#wrap{font-size:12px; line-height:20px; padding:20px;}
+.left li{float:left; padding:10px;}
+.shopcar li{float:left; padding:10px;}
+</style>
+
+</head>
+
+<body>
+<div id="wrap" ng-app="myApp" ng-controller="showItem">
+    <div style="overflow:hidden">
+        <ul class="left">
+            <li ng-repeat="value in items">
+                <p>序号：{{value.id}}</p>
+                <p>名称：{{value.name}}</p>
+                <p>单价：{{value.price}}</p>
+                <p><a href="javascript:;" ng-click="addToShopCarList()">购买</a></p>
+            </li>
+        </ul>
+    </div>
+    
+    <!-- 被水平线分隔的标题和段落： -->
+    <hr />
+    <hr />
+    
+    <p>点击购物车内的商品可以减少购买的商品数量</p>
+    <div class="shopcar">
+        <ul style="overflow:hidden;">
+            <li ng-repeat="value in shopCar" ng-click="DelFromShopCarList()" style="cursor:pointer">
+                <p>名称：{{value.name}}</p>
+                <p>数量：{{value.amount}}</p>
+                <p>单价：{{value.price}}</p>
+            </li>
+        </ul>
+        <p>商品总价：{{total}} 元</p>
+    </div>
+     
+</div>
+<script type="text/javascript">
+var item = [
+    {id : '1',name : '蜂蜜' ,price : 30},
+    {id : '2',name : '黄豆酱',price : 15},
+    {id : '3',name : '护手霜',price : 15},
+    {id : '4',name : '保温杯',price : 29},
+    {id : '5',name : '鼠标' ,price : 39},
+    {id : '6',name : '米老头',price : 18}
+];
+var shopCar=[];
+var app=angular.module("myApp",[]);
+app.controller("showItem",function($scope){
+    $scope.total=0;
+    $scope.items=item;
+    $scope.shopCar=shopCar;
+     
+    $scope.DelFromShopCarList=function(){
+        $scope.total-=this.value.price;
+        for(var i=0;i<$scope.shopCar.length;i++){
+            if($scope.shopCar[i].id==this.value.id){
+                $scope.shopCar[i].amount-=1;
+                if($scope.shopCar[i].amount===0){
+                    $scope.shopCar.splice(i,1)
+                }
+            }
+        }
+    }
+     
+     
+    $scope.addToShopCarList=function(){
+ 
+        var item={
+                name:this.value.name,
+                price:this.value.price,
+                id:this.value.id,
+                amount:1,
+        };
+        var len=shopCar.length;
+        var inArr=true;
+        for(var i=0;i<len;i++){
+            if(shopCar[i].id===this.value.id){
+                inArr=false;
+                shopCar[i].amount+=1;
+                break;
+            }
+        }
+         
+        if(inArr){
+            shopCar.push(item);
+        }
+         
+        $scope.total+=shopCar[i].price;
+    }
+})
+</script>
+</body>
+</html>
