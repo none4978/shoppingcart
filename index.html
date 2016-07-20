@@ -3,8 +3,11 @@
 <head>
 <meta charset="utf-8" />
 <title>angular</title>
-<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
-<script type="text/javascript">
+   <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+   <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+   <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+   <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+   <script type="text/javascript">
  
     //购物车中的数据;
     //var boughtList = {};
@@ -27,7 +30,7 @@
                 <p>序号：{{value.id}}</p>
                 <p>名称：{{value.name}}</p>
                 <p>单价：{{value.price}}</p>
-                <p><a href="javascript:;" ng-click="addToShopCarList()">购买</a></p>
+                <button type="button" class="btn btn-xs" ng-click="addToShopCarList()">购买</button>
             </li>
         </ul>
     </div>
@@ -36,13 +39,14 @@
     <hr />
     <hr />
     
-    <p>点击购物车内的商品可以减少购买的商品数量</p>
+    <p>购物车</p>
     <div class="shopcar">
         <ul style="overflow:hidden;">
-            <li ng-repeat="value in shopCar" ng-click="DelFromShopCarList()" style="cursor:pointer">
+            <li ng-repeat="value in shopCar" style="cursor:pointer">
                 <p>名称：{{value.name}}</p>
                 <p>数量：{{value.amount}}</p>
                 <p>单价：{{value.price}}</p>
+                <button class="btn btn-xs" ng-click="DelFromShopCarList()">删除</button>
             </li>
         </ul>
         <p>商品总价：{{total}} 元</p>
