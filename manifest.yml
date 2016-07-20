@@ -1,7 +1,7 @@
 ---
 applications:
-- buildpack: https://github.com/none4978/shoppingcart.git
-  host: shoppingcart-html-${random-word}
+- buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git
+  host: shoppingcart-html-eyang
   name: shoppingcart-html
   memory: 64M
   stack: cflinuxfs2
