@@ -2,3 +2,22 @@
 #wrap{font-size:12px; line-height:20px; padding:20px;}
 .left li{float:left; padding:10px;}
 .shopcar li{float:left; padding:10px;}
+
+
+
+/*--------------- expander style -------------*/
+.expander {
+    border: 1px solid black;
+    width: 700px;
+}
+
+.expander>.title {
+    background-color: black;
+    color: white;
+    padding: .1em .3em;
+    cursor: pointer;
+}
+
+.expander>.body {
+    padding: .1em .3em;
+}
