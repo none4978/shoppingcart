@@ -51,7 +51,7 @@ app.controller("Item",function($scope){
     }
     
     $scope.opentitle=function(){
-    	$scope.title = '商品列表';	
+    	$scope.title = '打开商品列表';	
     }
 });
 
